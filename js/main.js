@@ -1,5 +1,41 @@
 
 
+class Game {
+    constructor() {
+        this.player = null;
+        this.obstaclesArr = []; //will store instances of the class Obstacle
+    }
+    start() {
+        this.player = new Player();
+
+        this.attachEventListeners();
+
+        //create new obstacles
+        setInterval( () => {
+            const myObstacle = new Obstacle();
+            this.obstaclesArr.push(myObstacle);
+        }, 2000);
+
+
+        //move all obstacles
+        setInterval( () => {
+            this.obstaclesArr.forEach((obstacleInstance) => {
+                obstacleInstance.moveDown();
+            });
+        }, 16);
+    }
+    attachEventListeners() {
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "ArrowLeft") {
+                this.player.moveLeft();
+            } else if (e.key === "ArrowRight") {
+                this.player.moveRight();
+            }
+        });
+    }
+}
+
+
 class Player {
     constructor(){
         this.positionX = 0;
@@ -15,7 +51,6 @@ class Player {
         this.playerElm.style.left = this.positionX + "vw";
     }
 }
-
 
 
 class Obstacle {
@@ -46,31 +81,8 @@ class Obstacle {
 
 
 
-const myPlayer = new Player();
-const obstaclesArr = []; //will store instances of the class Obstacle
+const game = new Game();
+game.start();
 
 
-//create new obstacles
-setInterval(function(){
-    const myObstacle = new Obstacle();
-    obstaclesArr.push(myObstacle);
-}, 2000);
-
-
-//move all obstacles
-setInterval(function(){
-    obstaclesArr.forEach( (obstacleInstance) => {
-        obstacleInstance.moveDown();
-    });
-}, 16);
-
-
-//attach event listeners
-document.addEventListener("keydown", (e) => {
-    if(e.key === "ArrowLeft"){
-        myPlayer.moveLeft();
-    } else if (e.key === "ArrowRight") {
-        myPlayer.moveRight();
-    }
-});
 
