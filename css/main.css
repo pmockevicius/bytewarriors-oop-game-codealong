@@ -1,21 +1,47 @@
-body {
+#main {
     margin: 0;
     padding: 0;
+    
+}
+
+#Gameover {
+    background-color: blue;
+    background-image: url(../images/ok.jpeg);
+    background-size: 100%;
+  
+}
+#Gameover h1 {
+    color: rgb(0, 251, 255);
+    text-align: center;
+    align-items: center;
+    font-size: 200px;
 }
 
 #board {
     background-color: green;
     height: 100vh;
     position: relative;
+    background-image: url(../images/aerial-shot-of-ocean.jpeg);
+    background-size: 100% 100%;
 }
 
 #player {
     background-color: fuchsia;
     position: absolute;
     bottom: 0;
+    background-image: url(../images/depositphotos_139288442-stock-illustration-kitesurfer-surfen-over-the-ocean.jpeg);
+    background-size: 100% 100%;
 }
 
 .obstacle {
     background-color: orange;
     position: absolute;
+    background-image: url(../images/windsurfer2.jpeg);
+    background-size: 100% 100%;
+}
+
+#player img {
+    max-width:100%;
+    max-height:100%;
+
 }
